@@ -1,4 +1,5 @@
 import React from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
 
 interface FlapHeaderProps {
@@ -15,12 +16,13 @@ interface FlapHeaderProps {
  */
 export default function FlapHeader({text, eyebrow, icon}: FlapHeaderProps): React.ReactElement {
   const chars = text.toUpperCase().split('');
+  const iconUrl = useBaseUrl(icon || '');
 
   return (
     <div className={styles.wrapper}>
       {(eyebrow || icon) && (
         <div className={styles.eyebrowRow}>
-          {icon && <img src={icon} alt="" aria-hidden="true" className={styles.icon} />}
+          {icon && <img src={iconUrl} alt="" aria-hidden="true" className={styles.icon} />}
           {eyebrow && <div className={styles.eyebrow}>{eyebrow}</div>}
         </div>
       )}
