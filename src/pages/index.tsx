@@ -2,6 +2,7 @@ import React from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import FlapHeader from '@site/src/components/FlapHeader';
 import {topics} from '@site/src/data/topics';
 import styles from './index.module.css';
@@ -30,6 +31,7 @@ function Hero() {
 }
 
 function WorkflowOverview() {
+  const imgSrc = useBaseUrl('/img/workflow-overview.svg');
   return (
     <section className="container">
       <Heading as="h2" className={styles.gridHeading}>
@@ -41,12 +43,34 @@ function WorkflowOverview() {
       </p>
       <div className={`${styles.workflowFrame} fade-section`}>
         <img
-          src="/img/workflow-overview.svg"
+          src={imgSrc}
           alt="Flow diagram: PNR Creation leads to Fare and Pricing, then Ticketing, then Reissue and Exchange, then Refunds. Seat Maps and Ancillaries branches off Ticketing. Queue Management runs underneath PNR Creation through Ticketing. Error Codes is a reference usable at any stage."
           className={styles.workflowImg}
         />
       </div>
     </section>
+  );
+}
+
+function TopicCard({topic}: {topic: (typeof topics)[number]}) {
+  const iconSrc = useBaseUrl(topic.icon);
+  return (
+    <Link to={`/${topic.slug}`} className="topic-card fade-section">
+      <img src={iconSrc} alt="" aria-hidden="true" className={styles.topicIcon} />
+      <span className="topic-card__eyebrow">{topic.eyebrow}</span>
+      <h3 className="topic-card__title">{topic.title}</h3>
+      <p className="topic-card__desc">{topic.description}</p>
+      {topic.status === 'help-wanted' && (
+        <span className={`status-chip status-chip--error ${styles.chipSpacing}`}>
+          Help wanted
+        </span>
+      )}
+      {topic.status === 'complete' && (
+        <span className={`status-chip status-chip--valid ${styles.chipSpacing}`}>
+          Documented
+        </span>
+      )}
+    </Link>
   );
 }
 
@@ -58,22 +82,7 @@ function TopicGrid() {
       </Heading>
       <div className="topic-grid">
         {topics.map((topic) => (
-          <Link key={topic.slug} to={`/${topic.slug}`} className="topic-card fade-section">
-            <img src={topic.icon} alt="" aria-hidden="true" className={styles.topicIcon} />
-            <span className="topic-card__eyebrow">{topic.eyebrow}</span>
-            <h3 className="topic-card__title">{topic.title}</h3>
-            <p className="topic-card__desc">{topic.description}</p>
-            {topic.status === 'help-wanted' && (
-              <span className={`status-chip status-chip--error ${styles.chipSpacing}`}>
-                Help wanted
-              </span>
-            )}
-            {topic.status === 'complete' && (
-              <span className={`status-chip status-chip--valid ${styles.chipSpacing}`}>
-                Documented
-              </span>
-            )}
-          </Link>
+          <TopicCard key={topic.slug} topic={topic} />
         ))}
       </div>
     </section>
