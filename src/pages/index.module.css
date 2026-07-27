@@ -1,0 +1,126 @@
+.hero {
+  background: var(--board-ink);
+  color: #e7e9ee;
+  padding: 4.5rem 0 3.5rem;
+}
+
+.subtitle {
+  max-width: 42rem;
+  font-size: 1.15rem;
+  color: #c7cbd6;
+  margin: 0.5rem 0 2rem;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.primaryCta {
+  display: inline-block;
+  background: var(--board-amber);
+  color: var(--board-ink) !important;
+  font-weight: 700;
+  padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: transform var(--flap-transition);
+}
+
+.primaryCta:hover {
+  transform: translateY(-2px);
+}
+
+.hotkeyHint {
+  font-size: 0.85rem;
+  color: #9aa0ad;
+}
+
+.hotkeyHint kbd {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.gridHeading {
+  margin-top: 3rem;
+}
+
+.topicIcon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.workflowCaption {
+  color: var(--board-slate);
+  max-width: 40rem;
+  margin: 0.35rem 0 1.25rem;
+}
+
+.workflowFrame {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 176, 32, 0.25);
+  line-height: 0;
+}
+
+.workflowImg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.chipSpacing {
+  margin-top: 0.9rem;
+}
+
+.contribute {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 4rem;
+  padding: 1.75rem 2rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255, 176, 32, 0.12), rgba(14, 124, 123, 0.08));
+  border: 1px solid rgba(255, 176, 32, 0.3);
+}
+
+.contributeTitle {
+  margin: 0 0 0.4rem;
+}
+
+.contributeText {
+  margin: 0;
+  max-width: 34rem;
+  color: var(--board-slate);
+}
+
+.secondaryCta {
+  flex-shrink: 0;
+  display: inline-block;
+  border: 1px solid var(--board-amber-dim);
+  color: var(--board-amber-dim) !important;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none !important;
+  font-weight: 600;
+  transition: background var(--flap-transition), color var(--flap-transition);
+}
+
+[data-theme='dark'] .secondaryCta {
+  border-color: var(--board-amber);
+  color: var(--board-amber) !important;
+}
+
+.secondaryCta:hover {
+  background: var(--board-amber);
+  color: var(--board-ink) !important;
+}
